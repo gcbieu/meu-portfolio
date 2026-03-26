@@ -13,7 +13,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
         :root {
-            --bg-pink: #ffccf0; 
+            --bg-pink: #f0fdf4; 
         }
 
         body {
@@ -167,7 +167,7 @@
             font-size: 2rem;
             margin-bottom: 2rem;
             text-transform: uppercase;
-            color: #fff;
+            color: fuchsia-600;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
@@ -192,22 +192,10 @@
 
     <!-- CURRICULO -->
     <div id="particles-js"></div>
-    <a href="assets/Curriculo_Gabriel_Oliveira_Frontend.pdf" download class="fixed top-6 right-6 z-[100] flex items-center gap-3 bg-white/20 backdrop-blur-xl border border-white/30 px-6 py-3 rounded-full font-bold text-white hover:bg-fuchsia-600 transition-all shadow-2xl active:scale-95 group">
+    <a href="assets/Curriculo_Gabriel_Oliveira_Frontend.pdf" download class="fixed top-6 right-6 z-[100] flex items-center gap-3 bg-black backdrop-blur-xl border border-white/30 px-6 py-3 rounded-full font-bold text-white hover:bg-fuchsia-600 transition-all shadow-2xl active:scale-95 group">
     <span class="text-xs uppercase tracking-tighter">Download CV</span>
     <i class="fas fa-download group-hover:animate-bounce"></i>
     </a>
-
-    <!-- MODAL DE MENSAGEM ENVIADA -->
-    <div id="success-modal">
-        <div class="bg-white p-8 rounded-3xl text-center max-w-sm mx-4 shadow-2xl transform transition-all scale-100 border-4 border-fuchsia-500">
-            <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl">
-                <i class="fas fa-check"></i>
-            </div>
-            <h3 class="text-2xl font-black text-gray-800 mb-2 uppercase">Mensagem Enviada!</h3>
-            <p class="text-gray-600 mb-6 font-medium"></p>
-            <button onclick="closeModal()" class="w-full py-4 bg-fuchsia-500 text-white font-bold rounded-2xl hover:bg-fuchsia-600 transition-colors shadow-lg active:scale-95">FECHAR</button>
-        </div>
-    </div>
 
     <!-- HERO SECTION -->
     <section class="min-h-screen flex flex-col justify-center items-center p-6 text-center">
@@ -217,26 +205,31 @@
         </div>
 
         <div class="mt-4 px-4 w-full overflow-hidden">
-            <!-- NOME RESPONSIVO SEM CURSOR -->
-            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-3 typing-effect">Gabriel Oliveira</h1>
+           
+            <!-- NOMES DA CAPA NÃO MEXER -->
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-fuchsia-600 mb-3 typing-effect">Gabriel Oliveira</h1>
+           
             <!-- CARGO -->
             <p class="text-lg sm:text-xl md:text-2xl font-semibold uppercase tracking-[0.2em] text-gray-800 fade-in-up">Front-end Developer</p>
         </div>
 
         <!-- REDES SOCIAIS COM ANIMAÇÃO DE SUBIDA -->
-        <div class="flex gap-8 mt-12 text-4xl sm:text-5xl fade-in-up-icons">
-            <a href="https://github.com/gcbieu" target="_blank" class="text-white hover:text-cyan-400 transition-all hover:scale-110 active:scale-90">
-                <i class="fab fa-github"></i>
-            </a>
-            
-            <a href="https://linkedin.com/in/gcbieu" target="_blank" class="text-white hover:text-blue-500 transition-all hover:scale-110 active:scale-90">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
+            <div class="flex gap-8 mt-12 text-4xl sm:text-5xl fade-in-up-icons">
+                <a href="https://github.com/gcbieu" target="_blank" 
+                class="text-[#181717] hover:text-slate-700 transition-all hover:scale-110 active:scale-90">
+                    <i class="fab fa-github"></i>
+                </a>
+                
+                <a href="https://linkedin.com/in/gcbieu" target="_blank" 
+                class="text-[#0A66C2] hover:text-blue-700 transition-all hover:scale-110 active:scale-90">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
 
-        <a href="#sobre" class="mt-16 animate-bounce text-white text-3xl opacity-50 hover:opacity-100 transition-opacity">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+        <!-- SETA PARA ROLAR PARA A SEÇÃO SOBRE MIM -->
+            <a href="#sobre" class="mt-16 animate-bounce text-black text-3xl opacity-80 hover:opacity-100 transition-opacity">
+                <i class="fas fa-chevron-down"></i>
+            </a>
     </section>
 
     <!-- SOBRE MIM -->
@@ -258,13 +251,14 @@
                      <h3 class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-4">Minhas Stacks</h3>
                     <div class="flex flex-wrap justify-center md:justify-start gap-6 text-5xl">
                         <i class="fab fa-html5 text-orange-600 hover:scale-110 transition-transform" title="Html5"></i>
+                        <i class="fab fa-css3 text-[#264de4] hover:scale-125 transition-transform" title="CSS3" ></i>
                         <i class="fab fa-js text-yellow-500 hover:scale-125 transition-transform" title="JS"></i>
                         <i class="fab fa-angular text-red-600 hover:scale-125 transition-transform" title="Angular"></i>
                         <i class="fab fa-react text-cyan-400 hover:scale-125 transition-transform" title="React"></i>
                         <i class="fab fa-node-js text-green-600 hover:scale-125 transition-transform" title="Node"></i>
                         <i class="fas fa-database text-emerald-500 hover:scale-125 transition-transform" title="Mongo"></i>
-                        <i class="fab fa-github text-black hover:scale-125 transition-transform" title="GitHub"></i>
                         <i class="fab fa-git-alt text-orange-500 hover:scale-125 transition-transform" title="Git"></i>
+                        <i class="fab fa-github text-black hover:scale-125 transition-transform" title="GitHub"></i>
                     </div>
                 </div>
             </div>
@@ -273,26 +267,26 @@
 
         <!-- Trajetória Educação -->
         <section id="educacao" data-aos="fade-up" class="py-20 px-4 max-w-6xl mx-auto">
-        <h2 class="text-white text-4xl font-black uppercase mb-12 text-center">Trajetória</h2>
+        <h2 class="text-black text-4xl font-black uppercase mb-12 text-center">Trajetória</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="p-8 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 hover:border-cyan-500 transition-all">
-                <h3 class="text-xl font-bold text-white">•	Análise e Desenvolvimento de Sistemas</h3>
-                <p class="text-white-400 font-bold text-sm uppercase">Universidade Veiga de Almeida (UVA) | 3º semestre | Conclusão: 2º semestre de 2027</p>
+                <h3 class="text-xl font-bold text-black">•	Análise e Desenvolvimento de Sistemas</h3>
+                <p class="text-fuchsia-600 font-bold text-sm uppercase">Universidade Veiga de Almeida (UVA) | 3º semestre | Conclusão: 2º semestre de 2027</p>
             </div>
 
             <div class="p-8 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 hover:border-fuchsia-500 transition-all">
-                <h3 class="text-xl font-bold text-white">•	Front-end com IA</h3>
-                <p class="text-black-400 font-bold text-sm uppercase">SENAC | Conclusão: 06/2026</p>
+                <h3 class="text-xl font-bold text-black">•	Front-end com IA</h3>
+                <p class="text-fuchsia-600 font-bold text-sm uppercase">SENAC | Conclusão: 06/2026</p>
             </div>
 
             <div class="p-8 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 hover:border-fuchsia-500 transition-all">
-                <h3 class="text-xl font-bold text-white">•	Lógica de Programação </h3>
-                <p class="text-black-400 font-bold text-sm uppercase">SENAI | Concluído em 02/2026</p>
+                <h3 class="text-xl font-bold text-black">•	Lógica de Programação </h3>
+                <p class="text-fuchsia-600 font-bold text-sm uppercase">SENAI | Concluído em 02/2026</p>
             </div>
 
             <div class="p-8 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 hover:border-fuchsia-500 transition-all">
-                <h3 class="text-xl font-bold text-white">•	Inglês Intermediário</h3>
-                <p class="text-black-400 font-bold text-sm uppercase">CLAC - UFRJ | Conclusão: 07/2026</p>
+                <h3 class="text-xl font-bold text-black">•	Inglês Intermediário</h3>
+                <p class="text-fuchsia-600 font-bold text-sm uppercase">CLAC - UFRJ | Conclusão: 07/2026</p>
             </div>
         </div>
     </section>
@@ -327,8 +321,8 @@
                 <a href="#" target="_blank" class="project-card group">
                     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800" alt="Projeto 3" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     <div class="project-overlay">
-                        <h3 class="text-white font-black text-xl uppercase italic">App Mobile</h3>
-                        <p class="text-sm text-yellow-400 font-bold uppercase tracking-widest">React Native</p>
+                        <h3 class="text-white font-black text-xl uppercase italic">Sistema de clínica</h3>
+                        <p class="text-sm text-yellow-400 font-bold uppercase tracking-widest">VUE.js</p>
                     </div>
                 </a>
 
@@ -339,6 +333,7 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+
         // Inicializa AOS
         AOS.init({ duration: 1000, once: true });
 
@@ -346,11 +341,11 @@
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 80 },
-                "color": { "value": "#ffffff" },
+                "color": { "value": "#0891b2" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3 },
                 "size": { "value": 3 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#0891b2", "opacity": 0.2, "width": 1 },
                 "move": { "enable": true, "speed": 2 }
             },
             "interactivity": {
@@ -396,6 +391,18 @@
             <p class="text-[10px] sm:text-xs opacity-30 uppercase tracking-[0.5em]">© 2026 Gabriel Oliveira • Crafted with Passion</p>
         </div>
     </footer>
+
+        <!-- MODAL DE MENSAGEM ENVIADA -->
+    <div id="success-modal">
+        <div class="bg-white p-8 rounded-3xl text-center max-w-sm mx-4 shadow-2xl transform transition-all scale-100 border-4 border-fuchsia-500">
+            <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="text-2xl font-black text-gray-800 mb-2 uppercase">Mensagem Enviada!</h3>
+            <p class="text-gray-600 mb-6 font-medium"></p>
+            <button onclick="closeModal()" class="w-full py-4 bg-fuchsia-500 text-white font-bold rounded-2xl hover:bg-fuchsia-600 transition-colors shadow-lg active:scale-95">FECHAR</button>
+        </div>
+    </div>
 
     <!-- LÓGICA JAVASCRIPT -->
     <script>
