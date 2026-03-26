@@ -21,17 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* SOBRE MIM - ESTILO ESTÁTICO (SEM PISCAR) */
-        .titulo-sobre-original {
-            color: #111827;
-            font-size: 1.875rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            /* Removida a animação de flicker */
-        }
-
-        /* LOGO COM EFEITO PULSAR */
+        /* LOGO COM EFEITO PISCANTE INFINITO */
         .neon-container {
             position: relative;
             display: flex;
@@ -46,39 +36,37 @@
             width: 80%;
             max-width: 350px; 
             z-index: 5;
-            animation: hum 2s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 8px #ff00ff)
+                    drop-shadow(0 0 15px #ff00ff)
+                    drop-shadow(0 0 30px #ff00ff)
+                    drop-shadow(0 0 50px #00ffff);
+            animation: flicker-infinite 5s linear infinite,
+                       hum 2s infinite alternate ease-in-out;
         }
 
-        @keyframes hum {
-            0% { 
-                transform: scale(1); 
-                filter: drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 20px #00ffff); 
+        @keyframes flicker-infinite {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { 
+                opacity: 1; 
+                filter: drop-shadow(0 0 8px #ff00ff) drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 30px #ff00ff) drop-shadow(0 0 50px #00ffff);
             }
-            100% { 
-                transform: scale(1.05); 
-                filter: drop-shadow(0 0 30px #ff00ff) drop-shadow(0 0 50px #00ffff); 
-            }
-        }
-
-        /* Luz do poste piscando (apenas no poste, não no texto) */
-        @keyframes flicker-light {
-            0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% { 
-                opacity: 0.9; 
-                transform: scale(1); 
-                box-shadow: 0 0 30px 10px #fde047, 0 0 60px 20px #fde047;
-            }
-            20%, 21.9%, 63%, 63.9%, 65%, 69.9% { 
-                opacity: 0.1; 
-                transform: scale(0.7);
-                box-shadow: none;
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% { 
+                opacity: 0.4; 
+                filter: drop-shadow(0 0 2px #ff00ff);
             }
         }
 
-        .animate-flicker-light {
-            animation: flicker-light 4s infinite;
-        }
+@keyframes hum {
+    0% { 
+        transform: scale(1); 
+        filter: drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 20px #00ffff); 
+    }
+    100% { 
+        transform: scale(1.10); 
+        filter: drop-shadow(0 0 40px #ff00ff) drop-shadow(0 0 70px #00ffff); 
+    }
+}
 
-        /* ANIMAÇÃO DE ESCRITA NO NOME */
+        /* ANIMAÇÃO DE ESCRITA NO NOME - ACELERADA */
         .typing-effect {
             display: inline-block;
             overflow: hidden;
@@ -95,10 +83,12 @@
             to { width: 100% }
         }
 
+        /* EFEITO DE SURGIMENTO DO SUBTÍTULO */
         .fade-in-up {
             animation: fadeInUp 1.2s ease-out 1.0s both;
         }
 
+        /* ANIMAÇÃO PARA OS ÍCONES SUBIREM PARA A POSIÇÃO */
         .fade-in-up-icons {
             animation: fadeInUp 1s ease-out 1.9s both;
         }
@@ -114,7 +104,7 @@
             }
         }
 
-        /* CARROSSEL NETFLIX */
+        /* CARROSSEL ESTILO NETFLIX */
         .netflix-row {
             display: flex;
             overflow-x: auto;
@@ -166,6 +156,11 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
+        @media (min-width: 768px) {
+            .section-title { font-size: 3rem; }
+        }
+
+        /* ESTILO DO MODAL DE SUCESSO */
         #success-modal {
             display: none;
             position: fixed;
@@ -180,83 +175,74 @@
 </head>
 <body>
 
-    <!-- MODAL DE SUCESSO -->
+    <!-- MODAL DE MENSAGEM ENVIADA -->
     <div id="success-modal">
-        <div class="bg-white p-8 rounded-3xl text-center max-w-sm mx-4 shadow-2xl border-4 border-fuchsia-500">
+        <div class="bg-white p-8 rounded-3xl text-center max-w-sm mx-4 shadow-2xl transform transition-all scale-100 border-4 border-fuchsia-500">
             <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl">
                 <i class="fas fa-check"></i>
             </div>
             <h3 class="text-2xl font-black text-gray-800 mb-2 uppercase">Mensagem Enviada!</h3>
-            <p class="text-gray-600 mb-6 font-medium">Obrigado pelo contato!</p>
+            <p class="text-gray-600 mb-6 font-medium"></p>
             <button onclick="closeModal()" class="w-full py-4 bg-fuchsia-500 text-white font-bold rounded-2xl hover:bg-fuchsia-600 transition-colors shadow-lg active:scale-95">FECHAR</button>
         </div>
     </div>
 
     <!-- HERO SECTION -->
     <section class="min-h-screen flex flex-col justify-center items-center p-6 text-center">
+        <!-- LOGO PRINCIPAL -->
         <div class="neon-container mb-6">
             <img src="imagens/LOGO.png" alt="Logo GO" class="neon-image" onerror="this.src='https://via.placeholder.com/350?text=Logo+GO'"/>
         </div>
 
         <div class="mt-4 px-4 w-full overflow-hidden">
+            <!-- NOME RESPONSIVO SEM CURSOR -->
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-3 typing-effect">Gabriel Oliveira</h1>
+            <!-- CARGO -->
             <p class="text-lg sm:text-xl md:text-2xl font-semibold uppercase tracking-[0.2em] text-gray-800 fade-in-up">Front-end Developer</p>
         </div>
 
+        <!-- REDES SOCIAIS COM ANIMAÇÃO DE SUBIDA -->
         <div class="flex gap-8 mt-12 text-4xl sm:text-5xl fade-in-up-icons">
-            <a href="https://github.com/gcbieu" target="_blank" class="text-white hover:text-cyan-400 transition-all hover:scale-110">
+            <a href="https://github.com/gcbieu" target="_blank" class="text-white hover:text-cyan-400 transition-all hover:scale-110 active:scale-90">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com/in/gcbieu" target="_blank" class="text-white hover:text-blue-500 transition-all hover:scale-110">
+            
+            <a href="https://linkedin.com/in/gcbieu" target="_blank" class="text-white hover:text-blue-500 transition-all hover:scale-110 active:scale-90">
                 <i class="fab fa-linkedin"></i>
             </a>
         </div>
 
-        <a href="#sobre" class="mt-16 animate-bounce text-white text-3xl opacity-50">
+        <a href="#sobre" class="mt-16 animate-bounce text-white text-3xl opacity-50 hover:opacity-100 transition-opacity">
             <i class="fas fa-chevron-down"></i>
         </a>
     </section>
 
-    <!-- SEÇÃO SOBRE MIM (ESTÁTICA E AJUSTADA) -->
-    <section id="sobre" class="relative py-16 px-4 sm:px-10 max-w-5xl mx-auto bg-white/40 backdrop-blur-lg rounded-[2.5rem] my-10 shadow-2xl border border-white/20 ml-auto mr-4 md:ml-40 overflow-visible">
+    <!-- SOBRE MIM -->
+    <section id="sobre" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto bg-white/40 backdrop-blur-lg rounded-[2.5rem] my-10 shadow-2xl border border-white/20">
         <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-            
-            <!-- FOTO -->
-            <div class="w-56 h-56 sm:w-72 sm:h-72 rounded-3xl overflow-hidden shadow-2xl bg-gray-200 flex-shrink-0 border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500 z-10">
+            <!-- FOTO DE PERFIL -->
+            <div class="w-56 h-56 sm:w-72 sm:h-72 rounded-3xl overflow-hidden shadow-2xl bg-gray-200 flex-shrink-0 border-4 border-white/80 rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img src="imagens/sobre%20mim.jpg" alt="Gabriel Oliveira" class="w-full h-full object-cover">
             </div>
             
-            <!-- TEXTO -->
-            <div class="text-center md:text-left flex-1 z-10 md:pr-40"> 
-            <h2 class="titulo-sobre-original mb-4">SOBRE MIM</h2>
-
-                <p class="text-gray-800 text-base md:text-lg leading-relaxed font-medium">
-                    Olá, eu sou Gabriel Oliveira. Estudante de Análise e Desenvolvimento de Sistemas e desenvolvedor em formação. Tenho foco em front-end, criando interfaces modernas, interativas e com forte atenção à experiência do usuário. Busco evoluir para full stack, sempre trazendo criatividade e uma visão diferente para cada projeto.
-                </p>
-                
-                <div class="mt-8">
-                    <h3 class="text-xs uppercase tracking-[0.3em] font-bold text-gray-600 mb-4">Minhas Stacks</h3>
-                    <div class="flex justify-center md:justify-start gap-4 text-4xl">
-                        <i class="fab fa-html5 text-orange-600"></i>
-                        <i class="fab fa-js text-yellow-500"></i>
-                        <i class="fab fa-css3-alt text-blue-600"></i>
-                        <i class="fab fa-react text-cyan-500"></i>
-                        <i class="fab fa-git-alt text-red-600"></i>
+            <div class="text-center md:text-left">
+                <h2 class="section-title !text-gray-900 !text-2xl sm:!text-3xl mb-4">SOBRE MIM</h2>
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-800 font-medium">Olá, eu sou Gabriel Oliveira. Estudante de Análise e Desenvolvimento de Sistemas e desenvolvedor. Tenho foco em front-end, criando interfaces modernas, interativas e com forte atenção à experiência do usuário. Busco evoluir para full stack, sempre trazendo criatividade e uma visão diferente para cada projeto.</p>
+                <div class="mt-10">
+                    <h3 class="font-bold mb-6 uppercase text-xs sm:text-sm tracking-[0.3em] text-gray-600">Minhas Stacks</h3>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-8 text-5xl sm:text-6xl">
+                        <i class="fab fa-html5 text-orange-600 hover:scale-110 transition-transform"></i>
+                        <i class="fab fa-css3-alt text-blue-600 hover:scale-110 transition-transform"></i>
+                        <i class="fab fa-js text-yellow-500 hover:scale-110 transition-transform"></i>
+                        <i class="fab fa-react text-cyan-500 hover:scale-110 transition-transform"></i>
+                        <i class="fab fa-git-alt text-red-600 hover:scale-110 transition-transform"></i>
                     </div>
-                </div>
-            </div>
-
-            <!-- POSTE À DIREITA -->
-            <div class="hidden md:block absolute right-[-230px] top-[31%] -translate-y-1/2 w-full max-w-[450px] pointer-events-none z-0">
-                <div class="relative">
-                    <img src="imagens/letreiro-sobre.png" alt="Poste" class="w-full h-auto drop-shadow-2xl">
-                    <div class="absolute top-[65%] left-[63%] w-10 h-10 bg-yellow-200 rounded-full blur-xl opacity-90 animate-flicker-light"></div>
                 </div>
             </div>
         </div>
     </section>
 
-      <!-- PROJETOS -->
+        <!-- PROJETOS -->
     <section id="projetos" class="py-20 px-4 sm:px-6 overflow-hidden">
         <div class="max-w-6xl mx-auto">
             <!-- Título atualizado conforme solicitado -->
